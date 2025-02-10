@@ -1,0 +1,118 @@
+.navbar {
+    background-color: rgb(220, 220, 220); /* Dark blue background */
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    max-width: 1500px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.navbar-logo {
+    color: rgb(76, 175, 80);
+    justify-self: start;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: relative; /* For the hover effect */
+}
+
+.nav-links {
+    color: rgb(13, 13, 13);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative; /* For the hover effect */
+}
+
+.nav-links::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Thickness of the hover border */
+    background-color: #4CAF50; /* Green color for the hover effect */
+    transform: scaleX(0); /* Start with no width */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.nav-links:hover::after {
+    transform: scaleX(1); /* Expand the border on hover */
+    transform-origin: bottom left;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 960px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .nav-menu.active {
+        background: #2c3e50;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-links {
+        text-decoration: none;
+        text-decoration-line: none;
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links:hover::after {
+        transform: scaleX(0); /* Disable hover effect on mobile */
+    }
+}
