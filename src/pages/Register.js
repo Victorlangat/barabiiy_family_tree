@@ -1,61 +1,122 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import './Register.css';
 
-const Register = ({ fetchFamilyTree }) => {
-    const [name, setName] = useState('');
-    const [dob, setDob] = useState('');
-    const [father, setFather] = useState('');
-    const [mother, setMother] = useState('');
-    const [hasSpouse, setHasSpouse] = useState(false);
-    const [spouse, setSpouse] = useState('');
-    const [phone, setPhone] = useState('');
-    const [error, setError] = useState('');
+const Register = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        fatherName: '', // Added field for father's name
+        motherName: '', // Added field for mother's name
+        spouseName: '', // Added field for spouse's name
+    });
 
-    const handleSubmit = async (e) => {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (!name || !dob) {
-            setError('Name and Date of Birth are required');
-            return;
-        }
-
-        await axios.post('http://localhost:5000/add_member', {
-            name,
-            dob,
-            father,
-            mother,
-            spouse: hasSpouse ? spouse : null,
-            phone
-        });
-
-        fetchFamilyTree(); // Fetch the updated family tree
-        setError('');
+        // Add form submission logic here
+        console.log('Form submitted:', formData);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <input type="date" placeholder="Date of Birth" value={dob} onChange={(e) => setDob(e.target.value)} required />
-            <input type="text" placeholder="Father's Name" value={father} onChange={(e) => setFather(e.target.value)} />
-            <input type="text" placeholder="Mother's Name" value={mother} onChange={(e) => setMother(e.target.value)} />
-            
-            <label>
-                <input type="radio" checked={hasSpouse} onChange={() => setHasSpouse(true)} />
-                Has Spouse
-            </label>
-            <label>
-                <input type="radio" checked={!hasSpouse} onChange={() => setHasSpouse(false)} />
-                No Spouse
-            </label>
-
-            {hasSpouse && (
-                <input type="text" placeholder="Spouse's Name" value={spouse} onChange={(e) => setSpouse(e.target.value)} />
-            )}
-
-            <input type="tel" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
-            <button type="submit">Submit</button>
-        </form>
+        <div className="register-container">
+            <div className="register-card">
+                <h2>Register</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Enter your name"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Enter your email"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="fatherName">Father's Name</label>
+                        <input
+                            type="text"
+                            id="fatherName"
+                            name="fatherName"
+                            value={formData.fatherName}
+                            onChange={handleChange}
+                            placeholder="Enter your father's name"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="motherName">Mother's Name</label>
+                        <input
+                            type="text"
+                            id="motherName"
+                            name="motherName"
+                            value={formData.motherName}
+                            onChange={handleChange}
+                            placeholder="Enter your mother's name"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="spouseName">Spouse's Name</label>
+                        <input
+                            type="text"
+                            id="spouseName"
+                            name="spouseName"
+                            value={formData.spouseName}
+                            onChange={handleChange}
+                            placeholder="Enter your spouse's name (if applicable)"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            placeholder="Enter your password"
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            placeholder="Confirm your password"
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="submit-button">
+                        Register
+                    </button>
+                </form>
+            </div>
+        </div>
     );
 };
 
