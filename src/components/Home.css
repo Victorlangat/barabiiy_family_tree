@@ -1,7 +1,10 @@
 .home-container {
     text-align: center;
     padding: 20px;
-}
+    animation: fadeIn 0.8s ease-in; 
+    }
+
+
 
 .hero-section {
     background: url('family-hero.jpg') no-repeat center center/cover;
