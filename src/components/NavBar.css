@@ -50,6 +50,8 @@
 .nav-links {
     color: rgb(13, 13, 13);
     display: flex;
+    font-family: 'poppins';
+    font-weight: 600;
     align-items: center;
     text-decoration: none;
     padding: 0 1rem;
