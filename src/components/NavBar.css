@@ -119,3 +119,46 @@
         transform: scaleX(0); /* Disable hover effect on mobile */
     }
 }
+
+/* NavBar.css */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        flex-direction: column;
+        background-color: rgb(220, 220, 220);
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        height: 60px;
+    }
+}
+
+.navbar-container {
+    padding: 0 15px;
+}
+
+/* Add to NavBar.css */
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: #4CAF50;
+}
+
+@media screen and (max-width: 960px) {
+    .mobile-menu-icon {
+        display: block;
+        position: absolute;
+        right: 20px;
+    }
+    
+    /* Keep existing mobile menu styles */
+}

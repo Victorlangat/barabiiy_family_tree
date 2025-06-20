@@ -125,3 +125,57 @@ padding: 25px;
   font-size: 24px;
 }
 }
+
+/* Register.css */
+.register-card {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px;
+}
+
+/* Add to Register.css */
+.checkbox-options {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.checkbox-label {
+  /* display: flex; */
+  align-items: center;
+  gap: 12px;
+  /* padding: 8px 12px; */
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  padding-left: 20%px;
+}
+
+.checkbox-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4CAF50;
+  border-radius: 50%;
+  margin: 5%;
+  margin-top: 1.5%;
+  padding-top:5%;
+  padding-bottom:2%;
+  position:relative;
+  top: 3px;
+}
+
+.checkbox-label input[type="radio"]:checked::before {
+  width: 10px;
+  height: 10px;
+}
+
+
+
+@media (max-width: 480px) {
+  .form-group input {
+      padding: 10px;
+  }
+  
+  .submit-button {
+      padding: 12px;
+      font-size: 14px;
+  }
+}

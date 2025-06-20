@@ -54,3 +54,29 @@ footer-container {
 .footer-icon {
     font-size: 24px;
 }
+
+
+/* footer.css */
+.footer-container {
+    background-color: rgb(169, 167, 167);
+    padding: 30px 20px;
+    margin-top: auto; /* Push footer to bottom */
+    border-top: 1px solid #e0e0e0;
+    animation: fadeIn 0.8s ease-in;
+}
+
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 15px;
+        padding-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .footer-icon {
+        font-size: 22px;
+    }
+    
+    .footer-text {
+        font-size: 0.8rem;
+    }
+}
